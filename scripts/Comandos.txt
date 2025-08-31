@@ -1,0 +1,13 @@
+sed -i -e 's/\r$//' install_comfyui.sh && chmod +x install_comfyui.sh && ./install_comfyui.sh
+
+
+wget -O /workspace/ComfyUI/models/checkpoints/v1-5-pruned-emaonly.safetensors https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors
+
+
+
+
+#download_flux_models.py
+
+pip install ipywidgets
+pip install hf_transfer
+export HF_HUB_ENABLE_HF_TRANSFER=1
