@@ -6,8 +6,18 @@ wget -O /workspace/ComfyUI/models/checkpoints/v1-5-pruned-emaonly.safetensors ht
 
 
 
-#download_flux_models.py
-
-pip install ipywidgets
-pip install hf_transfer
+COMANDOS CORREGIDOS PARA LA DESCRIPCIÓN:
+***Flux Models:***
+pip install huggingface_hub ipywidgets hf_transfer
 export HF_HUB_ENABLE_HF_TRANSFER=1
+python Flux_Models.py --dir /workspace/ComfyUI/models
+
+***WAN Image-to-Video:***
+pip install huggingface_hub ipywidgets hf_transfer
+export HF_HUB_ENABLE_HF_TRANSFER=1
+python Wan_I2V.py --dir /workspace/ComfyUI/models
+
+***WAN Text-to-Video:***
+pip install huggingface_hub ipywidgets hf_transfer
+export HF_HUB_ENABLE_HF_TRANSFER=1
+python Wan_T2V.py --dir /workspace/ComfyUI/models
