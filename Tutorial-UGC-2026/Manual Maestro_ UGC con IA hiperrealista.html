@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manual Maestro: Prompts para AI UGC Hiperrealista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ecebf3;--paper:#fff;--ink:#1d1a2f;--mute:#5f5b78;--line:#d6d3e4;
+  --pink:#e0386f;--teal:#16807f;--code:#1d1a2f;--codetx:#f2eefc;--tint:#f7e3ea;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16142a;--paper:#211e3b;--ink:#f0eefb;--mute:#a9a5c6;--line:#37335a;--pink:#ff6b9a;--teal:#4fd1c5;--code:#0f0d1f;--tint:#3a2040}}
+:root[data-theme="dark"]{--bg:#16142a;--paper:#211e3b;--ink:#f0eefb;--mute:#a9a5c6;--line:#37335a;--pink:#ff6b9a;--teal:#4fd1c5;--code:#0f0d1f;--tint:#3a2040}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.08;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+a{color:var(--pink)}
+/* hero */
+.hero{padding:56px 0 40px}
+.vf{position:relative;background:var(--paper);border-radius:28px;padding:56px 36px 44px;margin:0;overflow:hidden}
+.vf i{position:absolute;width:34px;height:34px;border:3px solid var(--ink);opacity:.8}
+.vf i:nth-of-type(1){top:18px;left:18px;border-right:0;border-bottom:0}
+.vf i:nth-of-type(2){top:18px;right:18px;border-left:0;border-bottom:0}
+.vf i:nth-of-type(3){bottom:18px;left:18px;border-right:0;border-top:0}
+.vf i:nth-of-type(4){bottom:18px;right:18px;border-left:0;border-top:0}
+.rec{display:inline-flex;align-items:center;gap:8px;font:500 14px "JetBrains Mono",monospace;color:var(--pink)}
+.rec::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--pink);animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.rec::before{animation:none}html{scroll-behavior:auto}}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800;letter-spacing:-.025em;margin:18px 0 14px;max-width:14ch}
+.hero p{max-width:52ch;color:var(--mute);font-size:1.1rem;margin:0}
+.theme{position:absolute;top:22px;right:70px;background:none;border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;font-weight:500;padding:6px 12px;border-radius:16px}
+nav a:hover,nav a:focus-visible{background:var(--paper);outline:2px solid var(--pink);outline-offset:-2px}
+section{padding:64px 0 8px}
+h2{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+h3{font-size:1.2rem;font-weight:800}
+.lead{max-width:62ch;color:var(--mute)}
+.card{background:var(--paper);border-radius:20px;padding:26px 28px}
+.quote{border-left:5px solid var(--pink);background:var(--tint);border-radius:0 18px 18px 0;padding:22px 26px;font-size:1.1rem;max-width:70ch}
+.quote b{color:var(--pink)}
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-top:24px;padding:0;list-style:none;counter-reset:p}
+.pillars li{background:var(--paper);border-radius:18px;padding:20px 22px;counter-increment:p;position:relative}
+.pillars li::before{content:counter(p);font:800 2.2rem "Bricolage Grotesque",sans-serif;color:var(--pink);display:block;line-height:1;margin-bottom:8px}
+.pillars li:nth-child(1),.pillars li:nth-child(3){background:var(--tint)}
+.pillars h3{font-size:1.05rem;margin-bottom:6px}
+.pillars p{margin:0;font-size:.95rem;color:var(--mute);line-height:1.5}
+.badge{display:inline-block;background:var(--pink);color:#fff;font-size:12px;font-weight:700;padding:2px 10px;border-radius:12px;margin-left:6px;vertical-align:middle}
+/* formulas */
+.formula{margin-top:20px}
+.struct{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 22px}
+.struct span{background:var(--paper);border:1.5px solid var(--ink);border-radius:10px;padding:5px 13px;font-size:14px;font-weight:500}
+.struct span+span::before{content:"+ ";color:var(--pink);font-weight:700}
+.struct.v span{border-color:var(--teal)}
+.struct.v span+span::before{color:var(--teal)}
+.cap{font-size:13px;font-weight:700;color:var(--mute);margin:18px 0 6px}
+.codebox{position:relative}
+pre{background:var(--code);color:var(--codetx);border-radius:14px;padding:20px 20px 20px;margin:0;overflow-x:auto;font:400 13.5px/1.65 "JetBrains Mono",ui-monospace,monospace;white-space:pre-wrap;word-break:break-word}
+.copy{position:absolute;top:10px;right:10px;background:var(--pink);color:#fff;border:0;border-radius:8px;padding:5px 12px;font:700 12px "DM Sans",sans-serif;cursor:pointer}
+.copy:focus-visible{outline:2px solid #fff;outline-offset:2px}
+pre{padding-right:90px}
+.t{color:#ff9ec0}.d{color:#8fe3d8}
+/* tips */
+.rules{padding:0;margin:24px 0 0;list-style:none;display:grid;gap:10px}
+.rules li{background:var(--paper);border-radius:16px;padding:16px 22px 16px 20px;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.rules li::before{content:"✕";color:#fff;background:var(--pink);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px;margin-top:2px}
+.rules li:nth-child(n){counter-increment:none}
+.rules b{display:block}
+.rules code,.inl{font:400 .86em "JetBrains Mono",monospace;background:var(--tint);padding:1px 6px;border-radius:5px}
+/* steps */
+.steps{list-style:none;margin:26px 0 0;padding:0 0 0 22px;border-left:3px solid var(--teal);display:grid;gap:18px;counter-reset:s}
+.steps li{counter-increment:s;position:relative;background:var(--paper);border-radius:16px;padding:16px 22px}
+.steps li::before{content:counter(s);position:absolute;left:-43px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--teal);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:14px}
+.steps b{display:block}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:22px}
+.flow div{background:var(--paper);border-radius:14px;padding:14px;border-top:5px solid var(--teal)}
+.flow b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:1.05rem}
+.flow span{font-size:.88rem;color:var(--mute);line-height:1.4;display:block}
+footer{padding:60px 0 50px}
+footer .card{background:var(--ink);color:var(--bg);font-size:1.05rem}
+@media (max-width:560px){.vf{padding:52px 22px 36px}.theme{right:auto;left:22px;top:60px}.hero h1{margin-top:40px}pre{padding-right:20px;padding-top:50px}}
+</style>
+</head>
+<body>
+<header class="wrap hero">
+  <div class="vf">
+    <i></i><i></i><i></i><i></i>
+    <button class="theme" id="theme" aria-label="Cambiar tema">Cambiar tema</button>
+    <span class="rec">REC · iPhone 9:16</span>
+    <h1>Manual Maestro de UGC con IA hiperrealista</h1>
+    <p>Prompts, reglas y flujo de trabajo para crear personajes persistentes que parecen grabados con un teléfono. Basado en la estrategia de ViralOps: Consistencia + Psicología UGC.</p>
+  </div>
+</header>
+
+<nav aria-label="Secciones"><div class="wrap">
+  <a href="#filosofia">Filosofía</a><a href="#pilares">9 pilares</a><a href="#imagen">Prompt de imagen</a><a href="#video">Prompt de video</a><a href="#tips">7 reglas</a><a href="#post">Post-proceso</a><a href="#flujo">Tu flujo</a>
+</div></nav>
+
+<main class="wrap">
+<section id="filosofia">
+  <h2>Filosofía central</h2>
+  <p class="quote">La clave no es la imagen más perfecta ni la más cinematográfica. La clave es <b>Consistencia + Psicología UGC</b>: el contenido parece real porque no es perfecto, tiene errores humanos, se mueve como un teléfono y tiene iluminación casual. El 95% de los espectadores no notará que es IA si sigues estas reglas.</p>
+</section>
+
+<section id="pilares">
+  <h2>Los 9 pilares del UGC hiperrealista</h2>
+  <p class="lead">Todo prompt que crees debe incluir estos 9 elementos.</p>
+  <ol class="pillars">
+    <li><h3>Consistencia de personaje</h3><p>Misma cara, cuerpo, pecas, ropa y joyería en cada toma. Usa <span class="inl">@image1</span> o un bloque de identidad fijo.</p></li>
+    <li><h3>Textura de piel natural</h3><p>Poros visibles, pecas sutiles, brillo natural, vello fino y cero brillo plástico.</p></li>
+    <li><h3>Cámara en mano <span class="badge">#1 scroll-stopper</span></h3><p>Ligero temblor, encuadre imperfecto, desenfoque de movimiento de iPhone e inclinación sutil.</p></li>
+    <li><h3>Iluminación y entorno realistas</h3><p>Luz natural de ventana, sombras desiguales, nada de luz de estudio plana. Entorno desordenado y real.</p></li>
+    <li><h3>Física y movimiento preciso</h3><p>Movimientos naturales de manos, peso real al sostener objetos, pliegues de tela, parpadeo.</p></li>
+    <li><h3>Lip-sync y voz natural</h3><p>Pausas reales, respiraciones, muletillas («este…», «o sea») y pequeñas risas. Un robot de labios delata al instante.</p></li>
+    <li><h3>Asimetrías humanas y emoción</h3><p>Ligeras inclinaciones de cabeza, sonrisas no congeladas, contacto visual genuino y microexpresiones.</p></li>
+    <li><h3>Detalles estéticos UGC</h3><p>Ruido digital o grano sutil, fondo desenfocado, gradación de color cálida, vibra de metraje de iPhone.</p></li>
+    <li><h3>Flujo de historia y ritmo</h3><p>Cortes secos naturales y progresión lógica: Gancho → Problema → Demo → Resultado → CTA. Sin esto, hasta los visuales perfectos fallan.</p></li>
+  </ol>
+</section>
+
+<section id="imagen">
+  <h2>Fórmula 1: prompt de imagen</h2>
+  <p class="lead">Para ComfyUI / Z-Image Turbo. Úsala para generar las fotos base de tu influencer.</p>
+  <div class="struct"><span>Bloque de identidad</span><span>Textura de piel</span><span>Vestimenta</span><span>Pose / acción</span><span>Entorno</span><span>Iluminación</span></div>
+
+  <div class="cap">Bloque de identidad (cópialo siempre)</div>
+  <div class="codebox"><button class="copy" data-t="id">Copiar</button>
+<pre id="id">photorealistic, UGC style, authentic iPhone selfie footage, slight handheld camera shake, imperfect framing, natural skin texture, visible pores, subtle freckles, realistic skin sheen, no plastic skin, slightly grainy, unedited raw photo, curvy hourglass figure, athletic and toned body, slim waist, wide hips, thick thighs, (large firm breasts:1.3), long auburn hair, dark eyes, small septum piercing, soft natural smile,</pre></div>
+
+  <div class="cap">Ejemplo de prompt completo</div>
+  <div class="codebox"><button class="copy" data-t="img">Copiar</button>
+<pre id="img">[Bloque de Identidad] wearing a tiny white tank top and low-rise denim shorts, standing in a messy kitchen, holding a cup of coffee, leaning against the counter, natural warm window daylight, uneven shadows, warm color grading, highly detailed, 8k.</pre></div>
+</section>
+
+<section id="video">
+  <h2>Fórmula 2: prompt de video</h2>
+  <p class="lead">Image-to-video con Seedance, Kling o Higgsfield. Anima tus imágenes y crea el video UGC.</p>
+  <div class="struct v"><span>@image1 + @image2</span><span>Línea de tiempo (0-3s, 3-8s…)</span><span>Acción</span><span>Diálogo</span><span>Reglas de consistencia</span><span>Calidad técnica</span></div>
+
+  <div class="cap">Ejemplo de prompt de video (cópialo y adáptalo)</div>
+  <div class="codebox"><button class="copy" data-t="vid">Copiar</button>
+<pre id="vid">@image1 + @image2
+
+[0-3s]
+The woman from @image1 holds @image2 exactly like the reference selfie, fingers wrapped naturally. She looks directly into the front-facing iPhone camera with a relaxed half-smirk. Slight handheld wobble and autofocus breathing. Warm natural kitchen daylight from camera-right creates uneven shadows across her cheek. Visible skin pores, flyaway hairs.
+
+Dialogue: "Heyy… okay so my skin’s been so dry and tight lately, like nothing was helping, you know?"
+
+[3-8s]
+Quick natural cut. She squeezes cream from @image2 onto two fingers and gently pats it into her cheeks. Slight camera drift follows the hand movement. Product texture looks lightweight. Background stays slightly messy and softly out of focus.
+
+Dialogue: "But this cream? Literally obsessed. It just melts in… no stickiness at all."
+
+Maintain exact appearance from @image1, no drift, no deformation. Avoid jitter. Avoid bent limbs. Face stable. Natural smooth movement. Stable picture throughout.
+
+4K, Ultra HD, rich details, sharp clarity, natural colors, soft lighting, no blur, no ghosting, no flickering. No background music. No text overlay.</pre></div>
+</section>
+
+<section id="tips">
+  <h2>Los 7 pro tips: reglas de oro</h2>
+  <p class="lead">Si tu prompt rompe alguna de estas reglas, parecerá IA.</p>
+  <ul class="rules">
+    <li><div><b>Nunca hagas videos perfectos</b>Lo perfecto parece IA. Añade imperfecciones, temblor, desenfoque, encuadres raros, pausas y respiración.</div></li>
+    <li><div><b>La cámara en mano es la clave</b>Este simple truco engaña al 95% de los espectadores.</div></li>
+    <li><div><b>Usa siempre piel realista</b>Añade <code>visible pores</code>, <code>skin texture</code>, <code>subtle imperfections</code>, <code>flyaway hairs</code>, <code>natural sheen</code>.</div></li>
+    <li><div><b>Mantén continuidad absoluta</b>Incluye <code>Maintain exact appearance from @image1, no drift, face stable</code> en cada prompt de video.</div></li>
+    <li><div><b>No uses iluminación profesional</b>Mejor <code>daylight</code>, <code>uneven shadows</code>, <code>messy room</code> y entornos normales.</div></li>
+    <li><div><b>El guion importa más que el video</b>Estructura siempre: Gancho → Problema → Demo → Resultado → CTA.</div></li>
+    <li><div><b>El audio natural es crítico</b>Usa muletillas, respiraciones, pequeñas risas y pausas reales.</div></li>
+  </ul>
+  <div class="flow" style="margin-top:26px">
+    <div><b>Gancho</b><span>Captura en los primeros segundos</span></div>
+    <div><b>Problema</b><span>Algo con lo que se identifican</span></div>
+    <div><b>Demo</b><span>El producto en acción</span></div>
+    <div><b>Resultado</b><span>El cambio visible</span></div>
+    <div><b>CTA</b><span>Qué hacer ahora</span></div>
+  </div>
+</section>
+
+<section id="post">
+  <h2>Fase final: post-proceso</h2>
+  <p class="lead">En CapCut o Filmora. El paso que sella el realismo (2 minutos).</p>
+  <ol class="steps">
+    <li><b>Exporta el video</b>Desde tu generador: Arcads, Higgsfield o ComfyUI.</li>
+    <li><b>Añade camera shake sutil</b>Vibración de cámara ligera.</li>
+    <li><b>Añade film grain al 10-15%</b>Grano de película.</li>
+    <li><b>Aplica un color grade cálido</b>Estilo iPhone.</li>
+    <li><b>Añade música tendencia y texto superpuesto</b></li>
+    <li><b>Exporta en 9:16</b>Formato vertical.</li>
+  </ol>
+</section>
+
+<section id="flujo">
+  <h2>Cómo usar este manual en tu flujo actual</h2>
+  <ol class="steps">
+    <li><b>Generación (ComfyUI)</b>Usa la Fórmula 1 con tu modelo Z-Image Turbo. Asegúrate de que la piel tenga poros y textura.</li>
+    <li><b>Upscale (ComfyUI)</b>Pasa tus mejores imágenes por tu «Isla de Upscale» con el método puro 4x-NMKD para que queden nítidas.</li>
+    <li><b>Video (Higgsfield / Flow / Seedance)</b>Toma esa imagen nítida como <span class="inl">@image1</span> y escribe el prompt con la Fórmula 2, describiendo acción y diálogo segundo a segundo.</li>
+    <li><b>Edición (CapCut)</b>Aplica los 6 pasos de post-proceso.</li>
+  </ol>
+</section>
+</main>
+
+<footer class="wrap">
+  <div class="card">Este manual es el sistema completo (el «cerebro» de ViralOps) para construir un personaje persistente y escalable, no solo imágenes bonitas. Úsalo como checklist antes de cada generación.</div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.dataset.t);
+      var txt=el.innerText;
+      function ok(){b.textContent='¡Copiado!';setTimeout(function(){b.textContent='Copiar'},1500)}
+      try{
+        navigator.clipboard.writeText(txt).then(ok,fallback)
+      }catch(e){fallback()}
+      function fallback(){
+        try{var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy');ok()}catch(e){}
+      }
+    });
+  });
+  var t=document.getElementById('theme');
+  t.addEventListener('click',function(){
+    var r=document.documentElement;
+    var dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+    r.dataset.theme=dark?'light':'dark';
+  });
+})();
+</script>
+</body>
+</html>
